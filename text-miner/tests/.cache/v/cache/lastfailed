@@ -1,0 +1,15 @@
+{
+  "test_separator.py::test_money[$1,000-expected6]": true,
+  "test_separator.py::test_money[$1,000.00-expected7]": true,
+  "test_separator.py::test_money[$1000-expected4]": true,
+  "test_separator.py::test_money[$1000.00-expected5]": true,
+  "test_separator.py::test_money[$1234567.89-expected12]": true,
+  "test_separator.py::test_money[$19-expected1]": true,
+  "test_separator.py::test_money[$19.00-expected2]": true,
+  "test_separator.py::test_money[$3.58-expected3]": true,
+  "test_separator.py::test_money[$4-expected0]": true,
+  "test_separator.py::test_money[$45,555,555.55-expected10]": true,
+  "test_separator.py::test_money[$456,555,555.55-expected11]": true,
+  "test_separator.py::test_money[$5,555,555-expected8]": true,
+  "test_separator.py::test_money[$5,555,555.55-expected9]": true
+}
