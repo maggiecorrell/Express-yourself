@@ -4,7 +4,7 @@ params = pytest.mark.parametrize
 
 import textminer.extractor as x
 
-@xfail
+
 def test_phone_numbers():
     text = """Dear Mr. Davis,
 
@@ -23,16 +23,16 @@ You can contact me at (919) 123-4569 at your convenience."""
     assert x.phone_numbers(text) == ["(454) 999-1212", "(919) 123-4569"]
 
 ## ADVANCED MODE BEGINS
-
-@xfail
-def test_emails():
-    text = """Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi
-    welsh onion daikon amaranth@gmail.com tatsoi tomatillo azuki bean garlic.
-
-    Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette
-    tatsoi pea@sprouts.org fava bean collard greens dandelion okra wakame
-    tomato. Dandelion cucumber.earthnut@pea.net peanut soko zucchini."""
-
-    assert x.emails(text) == ["amaranth@gmail.com",
-                              "pea@sprouts.org",
-                              "cucumber.earthnut@pea.net"]
+#
+# @xfail
+# def test_emails():
+#     text = """Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi
+#     welsh onion daikon amaranth@gmail.com tatsoi tomatillo azuki bean garlic.
+#
+#     Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette
+#     tatsoi pea@sprouts.org fava bean collard greens dandelion okra wakame
+#     tomato. Dandelion cucumber.earthnut@pea.net peanut soko zucchini."""
+#
+#     assert x.emails(text) == ["amaranth@gmail.com",
+#                               "pea@sprouts.org",
+#                               "cucumber.earthnut@pea.net"]

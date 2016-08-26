@@ -25,13 +25,13 @@ def zipcode(x):
         return {"zip": zip, "plus4": plus4}
 
 
-def date(x):
-    date_regex = [r'(\d{1,2})/(\d{1,2})/(\d{4}|\d{2})',
-                  r'(\d{4})-?(\d{2})-?(\d{2})',
-                  r'(\d{1,2})\s*([A-Za-z])\s*(\d{4})',
-                  r'([A-Za-z]{3})\s*(\d{1,2})\s*,?\s*(\d{4})']
-    for regex in date_regex:
-        match = re.search(regex, x)
-        if match:
-            month, day, year = match.groups()
-            return {"month": month, "day": day, "year": year}
+# def date(x):
+#     date_regex = [r'(\d{1,2})/(\d{1,2})/(\d{4}|\d{2})',
+#                   r'(\d{4})-?(\d{2})-?(\d{2})',
+#                   r'(\d{1,2})\s*([A-Za-z])\s*(\d{4})',
+#                   r'([A-Za-z]{3})\s*(\d{1,2})\s*,?\s*(\d{4})']
+#     for regex in date_regex:
+#         match = re.search(regex, x)
+#         if match:
+#             month, day, year = match.groups()
+#             return {"month": month, "day": day, "year": year}
