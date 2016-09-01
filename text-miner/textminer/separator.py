@@ -1,7 +1,12 @@
 import re
 
 
-# def words(input):
+def words(x):
+    words = re.findall(r'\b[A-Za-z\-0-9]*-?[A-Za-z]+\b', x)
+    if words:
+        return words
+    else:
+        None
 
 
 def phone_number(x):
@@ -10,12 +15,19 @@ def phone_number(x):
         area_code, num1, num2 = match.groups()
         return {"area_code": area_code, "number": num1 + '-' + num2}
 
-#
-# def money(x):
-#     match = re.search(r'^\$\d{1,}(,\d{3})*[.]?(\d{2})?$', x)
-#     if match:
-#         currency, amount = match.groups()
-#         return {"currency": currency, "number": amount}
+
+def money(x):
+    match = re.search(r'^(\$)((\d{1,})+(,\d{3})*(\.\d{2})?)$', x)
+    if match:
+        groups = match.groups()
+        currency = groups[0]
+        amount = float(re.sub(r',', '', groups[1]))
+        # groups = match.groups()
+        # currency = groups[0]
+        # amount = float(groups[1].replace(',', ''))
+        return {"currency": currency, "amount": amount}
+    else:
+        return None
 
 
 def zipcode(x):
@@ -25,13 +37,16 @@ def zipcode(x):
         return {"zip": zip, "plus4": plus4}
 
 
-# def date(x):
-#     date_regex = [r'(\d{1,2})/(\d{1,2})/(\d{4}|\d{2})',
-#                   r'(\d{4})-?(\d{2})-?(\d{2})',
-#                   r'(\d{1,2})\s*([A-Za-z])\s*(\d{4})',
-#                   r'([A-Za-z]{3})\s*(\d{1,2})\s*,?\s*(\d{4})']
-#     for regex in date_regex:
-#         match = re.search(regex, x)
-#         if match:
-#             month, day, year = match.groups()
-#             return {"month": month, "day": day, "year": year}
+def date(x):
+    match = re.search(r'(?P<year1>(\d{1,2})\/(\d{1,2})\/(\d{4}))|(?P<year2>(\d{4})\-(\d{2})\-(\d{2}))', x)
+    if match:
+        if match.group('year1'):
+            month, day, year = match.group(2, 3, 4)
+            return {"month": int(month), "day": int(day), "year": int(year)}
+        elif match.group('year2'):
+            year, month, day = match.group(6, 7, 8)
+            return {"month": int(month), "day": int(day), "year": int(year)}
+        else:
+            return
+    else:
+        return None

@@ -1,11 +1,9 @@
 import pytest
 xfail = pytest.mark.xfail
 params = pytest.mark.parametrize
-
 import textminer.separator as s
 
 
-@xfail
 @params("input,expected", [
     ("hello", ['hello']),
     ("hello world", ['hello', 'world']),
@@ -29,7 +27,7 @@ def test_phone_numbers(input, expected):
     assert s.phone_number(input) == expected
 
 
-@xfail
+
 @params("input,expected", [
     ("$4", {"currency": "$", "amount": 4.0}),
     ("$19", {"currency": "$", "amount": 19.0}),
@@ -72,16 +70,16 @@ def test_zip(input, expected):
     assert s.zipcode(input) == expected
 
 
-# @params("input,expected", [
-#     ("9/4/1976", {"month": 9, "day": 4, "year": 1976}),
-#     ("1976-09-04", {"month": 9, "day": 4, "year": 1976}),
-#     ("2015-01-01", {"month": 1, "day": 1, "year": 2015}),
-#     ("02/15/2004", {"month": 2, "day": 15, "year": 2004}),
-#     ("9/4", None),
-#     ("2015", None),
-# ])
-# def test_date(input, expected):
-#     assert s.date(input) == expected
+@params("input,expected", [
+    ("9/4/1976", {"month": 9, "day": 4, "year": 1976}),
+    ("1976-09-04", {"month": 9, "day": 4, "year": 1976}),
+    ("2015-01-01", {"month": 1, "day": 1, "year": 2015}),
+    ("02/15/2004", {"month": 2, "day": 15, "year": 2004}),
+    ("9/4", None),
+    ("2015", None),
+])
+def test_date(input, expected):
+    assert s.date(input) == expected
 
 
 ## ADVANCED MODE BEGINS

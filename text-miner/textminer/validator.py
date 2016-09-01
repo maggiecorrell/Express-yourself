@@ -17,7 +17,11 @@ def word(x):
     return re.search(r'^\w[A-Za-z\-0-9]+[A-Za-z]+$', x)
 
 
-# def words(x, count=0):
+def words(x, count=None):
+    test = re.findall(r'\b[A-Za-z\-0-9]*-?[A-Za-z]+\b', x)
+    if count and test:
+        return len(test) == count
+    return bool(test)
 
 
 def phone_number(x):
@@ -34,9 +38,7 @@ def zipcode(x):
 
 def date(x):
     date_regex = [r'(\d{1,2})/(\d{1,2})/(\d{4}|\d{2})',
-                  r'(\d{4})-?(\d{2})-?(\d{2})',
-                  r'(\d{1,2})\s*([A-Za-z])\s*(\d{4})',
-                  r'([A-Za-z]{3})\s*(\d{1,2})\s*,?\s*(\d{4})']
+                  r'(\d{4})-?(\d{2})-?(\d{2})']
     for regex in date_regex:
         search = re.search(regex, x)
         if search:
